@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <title>Enigma 1</title>
+<body>
+
+<h2 ><u>Signup Customer</u></h2>
+
+<form id="form" action="localhost:8080/test/post" method="POST" >
+  First name :
+  <input type="text" pattern="[A-Za-z ]+" name="firstName" placeholder="Enter your First Name" >
+  <br><br>
+  Last name :
+  <input type="text" pattern="[A-Za-z ]+"name="lastName" placeholder="Enter your Last Name">
+  <br><br>
+  Birth Day :
+  <input type="date" name="birthDate">
+  <br><br>
+  Username :
+  <input type="text" name="username" placeholder="Enter your Username">
+  <br><br>
+  Password :
+  <input type="text" name="password" placeholder="Enter your Password">
+  <br><br>
+  Phone Type :
+  <select  name="phoneType">
+      <option value="Android">Android</option>
+      <option value="IOs">IOs</option>
+  </select>
+  <br><br>
+  Phone Number :
+  <input type="text" pattern="[0-9 ]+"name="phoneNumber" placeholder="Enter your Phone Number">
+  <br><br>
+
+
+  <input type="submit" value="Submit">
+  <button type="reset" value="Reset">Reset</button>
+</form> 
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script>
+    $(document).ready(function(){
+        // click on button submit
+        $("#submit").on('click', function(){
+            // send ajax
+            $.ajax({
+                url: 'localhost:8080/test/post', // url where to submit the request
+                type : "POST", // type of action POST || GET
+                dataType : 'json', // data type
+                data : $("#form").serialize(), // post data || get data
+                success : function(result) {
+                    // you can see the result from the console
+                    // tab of the developer tools
+                    console.log(result);
+                },
+                error: function(xhr, resp, text) {
+                    console.log(xhr, resp, text);
+                }
+            })
+        });
+    });
+
+</script>
+
+</body>
+</html>
