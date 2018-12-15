@@ -43,6 +43,11 @@
 
         <script>
             function insertRow(){
+                var x = document.getElementById("tableMain");
+                var y = x.rows.length-1;
+               
+                var last = x.rows[y-1];
+
                 var jmlh = document.getElementById('jumlah').value;
                 var hrga = document.getElementById('harga').value;
                 var jharga = jmlh*hrga;
@@ -56,12 +61,6 @@
                     } else {
                         ttdiscount = jharga;
                     }
-                
-
-                var x = document.getElementById("tableMain");
-                var y = x.rows.length-1;
-               
-                var last = x.rows[y-1];
 
                 var table = document.getElementById("tableBody");
                 var row = table.insertRow();
@@ -104,7 +103,7 @@
                         ttdiskoo = ttdiskoo + parseInt(table.rows[i].cells[6].innerHTML);
                     }
                     var hemat = ttharga-ttdiskoo;
-                    semuanya.innerHTML="<tr><td colspan='3'>  </td><td> Total </td> <td>"+ttharga+"</td> <td>Grand Total</td> <td colspan='2'>"+ttdiskoo+"</td></tr> <tr><td colspan='8'> Anda hemat "+hemat+"</td></tr>"
+                    semuanya.innerHTML="<tr><td colspan='3'>  </td><td> Total </td> <td>"+ttharga+"</td> <td>Grand Total</td> <td colspan='2'>"+ttdiskoo+"</td></tr>"
                 
                 
                    

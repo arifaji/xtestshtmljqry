@@ -13,7 +13,7 @@
     <button class="subnavbtn">Customer <i class="fa fa-caret-down"></i></button>
     <div class="subnav-content">
       <a href="sign-up.html">Sign Up</a>
-      <a href="sign-in.html">Sign In</a>
+      <a href="sign-inn.html">Sign In</a>
     </div>
   </div> 
   <div class="subnav">
@@ -33,10 +33,16 @@
   </div>
 </div>
 
-<div style="padding:0 16px">
+<div style="padding:0 16px"  >
   <h3>Welcome to Bootcamp Finance</h3>
-  <p></p>
+  <p id="result"></p>
 </div>
+
+<script>
+  
+   document.getElementById("result").innerHTML = localStorage.getItem("lastname");
+
+ </script>
 
 </body>
 </html>
