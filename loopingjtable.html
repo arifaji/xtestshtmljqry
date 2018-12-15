@@ -1,0 +1,64 @@
+<html>
+    <head>
+        <title>JS</title>
+    </head>
+
+    <body>
+        <h1>Hello :)</h1>
+        <input type="number"  id="jumlah">
+        <input type="number"  id="harga">
+        <button type="button" onclick="insertRow()">Add Row</button>
+        <button type="button" onclick="deleteFc()">Delete Row</button>
+        <table id="tableMain" border="1">
+            <thead id="tableHead">
+                <tr>
+                    <td>No </td>
+                    <td>Nama Barang </td>
+                    <td>Jumlah </td>
+                    <td>Harga </td>
+                    <td>Aksi </td>
+                </tr>
+            </thead>
+            <tbody id="tableBody"></tbody>
+        </table>
+
+        <script>
+            function insertRow(){
+                var x = document.getElementById("tableMain");
+                var y = x.rows.length;
+                var last = x.rows[y-1];
+
+                var table = document.getElementById("tableBody");
+                var row = table.insertRow();
+
+                var cell1 = row.insertCell(0);
+                var cell2 = row.insertCell(1);
+                var cell3 = row.insertCell(2);
+                var cell4 = row.insertCell(3);
+                var cell5 = row.insertCell(4);
+
+                var akhir = 0;
+                if(y > 1) {
+                    akhir = parseInt(last.cells[0].innerHTML)
+                }
+
+                cell1.innerHTML = akhir+1;
+                cell2.innerHTML = "Nama Barang";
+                cell3.innerHTML = document.getElementById('jumlah').value;
+                cell4.innerHTML = document.getElementById('harga').value;
+                cell5.innerHTML = '<button onclick="this.parentNode.parentNode.parentNode.deleteRow(this.parentNode.parentNode.rowIndex-1)" >Delete</button>';
+
+                
+            }
+            function deleteFc(){
+                var x = document.getElementById("tableBody").rows.length;
+                var table = document.getElementById("tableBody");
+                
+                table.deleteRow(x-1);
+
+            }
+            
+        </script>
+       
+    </body>
+</html>

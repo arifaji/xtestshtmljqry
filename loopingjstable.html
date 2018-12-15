@@ -1,0 +1,62 @@
+<html>
+    <head>
+        <title>JS</title>
+    </head>
+
+    <body>
+        <h1>Hello :)</h1>
+        <button type="button" onclick="addTable()">Add Row</button>
+        <button type="button" onclick="reset()">Delete Row</button>
+        <table id="tableMain" border="1">
+            <thead>
+                <tr>
+                    <td>No </td>
+                    <td>Nama Barang </td>
+                    <td>Jumlah </td>
+                </tr>
+            </thead>
+            <tbody id="tableBody"></tbody>
+        </table>
+
+        <script>
+            function addTable(){
+                var table = document.getElementById("tableBody");
+                var row = table.insertRow(0);
+                var koma = "'";
+
+                var cell1 = row.insertCell(0);
+                var cell2 = row.insertCell(1);
+                var cell3 = row.insertCell(2);
+                 
+                var len = document.getElementById("tableMain").rows.length;
+                var xy = len--;
+                for (let i=0;i < len; i--
+                 ) {
+                    cell1.innerHTML = xy;
+                    cell2.innerHTML = "Nama Barang";
+                    cell3.innerHTML = "Jumlah";
+                }
+                
+                // cell1.innerHTML = (len-1); 
+                
+            }
+
+            function reset(){
+                document.getElementById("tableBody").deleteRow(0);
+            }
+        </script>
+       
+    </body>
+</html>
+function deleteCl(x){
+    if(x!==null){
+        var tbl = document.getElementById("tblDataBody");
+        var selectedRow = document.getElementById("row"+x);
+        if(selectedRow!=null){
+            console.log('deleteing row : '+(selectedRow.rowIndex-1));
+            tbl.deleteRow(selectedRow.rowIndex-1);
+            calculateSumOfData();
+        }
+    }
+
+}

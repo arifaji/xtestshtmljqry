@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <title>JS</title>
+    </head>
+
+    <body>
+        <h1>Hello :)</h1>
+        <input type="number" id="counter"/>
+        <button onclick="myFunciton();">Print Row</button>
+        <div id="container"></div>
+
+        <script>
+            var link = " <input type='text' />";
+            var nama = "<p>Nama ";
+            var titik2 =  " : "
+                function myFunciton(x) {
+                    var div = document.getElementById("container");
+                    div.innerHTML = "";
+
+                    if(x==null)
+                    x = document.getElementById('counter').value;
+                    div = document.getElementById('container');
+                    for (let i=2;i<=x;i+=2) {
+                        div.innerHTML += nama +(i)+ titik2 +link;
+                    }
+                    document.getElementById("cetak").innerHTML = text;
+                }
+        </script>
+       
+    </body>
+</html>

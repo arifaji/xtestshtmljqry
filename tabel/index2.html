@@ -1,0 +1,151 @@
+<html>
+    <head>
+        <title>JS</title>
+    </head>
+
+    <body>
+        <h1>Hello :)</h1>
+        Nama Barang :        
+        <select  name="barang" id="barang">
+            <option value="indomie">indomie</option>
+            <option value="kopi">kopi</option>
+            <option value="frisian flag">frisian flag</option>
+            <option value="teh">teh</option>
+        </select>
+        <br><br>
+        Jumlah :
+        <input type="number"  id="jumlah">
+        <br><br>
+        Harga :
+        <input type="number"  id="harga"> 
+        <br><br>
+        <button type="button" onclick="insertRow()">Add Row</button>
+        <button type="button" onclick="deleteFc()">Delete Row</button>
+        <button type="button" onclick="refresh()">Refresh</button>
+        <br><br>
+        <table id="tableMain" border="1">
+            <thead id="tableHead">
+                <tr>
+                    <td>' No '</td>
+                    <td>'  Nama Barang '</td>
+                    <td>'  Jumlah '</td>
+                    <td>'  Harga '</td>
+                    <td>'  Jumlah Harga Normal  '</td>
+                    <td>'  Diskon '</td>
+                    <td>'  Harga Setelah Diskon '</td>
+                    <td>'  Aksi  '</td>
+                </tr>
+            </thead>
+            <tbody id="tableBody"></tbody>
+            <tfoot id="semuanya">
+            </tfoot>
+        </table>
+
+        <script>
+            function insertRow(){
+                var jmlh = document.getElementById('jumlah').value;
+                var hrga = document.getElementById('harga').value;
+                var jharga = jmlh*hrga;
+                var discount = 0;
+                    if (jmlh >= 5) {
+                        discount = 10
+                    }
+                var ttdiscount = 0;
+                     if (jmlh >= 5) {
+                        ttdiscount = jharga-jharga*10/100;
+                    } else {
+                        ttdiscount = jharga;
+                    }
+                
+
+                var x = document.getElementById("tableMain");
+                var y = x.rows.length-1;
+               
+                var last = x.rows[y-1];
+
+                var table = document.getElementById("tableBody");
+                var row = table.insertRow();
+
+                var cell1 = row.insertCell(0);
+                var cell2 = row.insertCell(1);
+                var cell3 = row.insertCell(2);
+                var cell4 = row.insertCell(3);
+                var cell5 = row.insertCell(4);
+                var cell6 = row.insertCell(5);
+                var cell7 = row.insertCell(6);
+                var cell8 = row.insertCell(7);
+ 
+ 
+
+                var akhir = 0;
+                if(y > 1) {
+                    akhir = parseInt(last.cells[0].innerHTML)
+                }
+
+                cell1.innerHTML = akhir+1;
+                cell2.innerHTML = document.getElementById('barang').value;
+                cell3.innerHTML = jmlh;
+                cell4.innerHTML = hrga;
+                cell5.innerHTML = jharga;
+                cell6.innerHTML = discount+" %";
+                cell7.innerHTML = ttdiscount;
+                cell8.innerHTML = '<button onclick="deleteFkRow()" >Delete</button>';
+                    var txharga = 0;
+                    for (i=0; i < table.rows.length ; i++){
+                        txharga = txharga + parseInt(table.rows[i].cells[3].innerHTML);
+                    }
+
+                    var ttharga = 0;
+                    for (i=0; i < table.rows.length ; i++) {
+                        ttharga = ttharga + parseInt(table.rows[i].cells[3].innerHTML)*parseInt(table.rows[i].cells[2].innerHTML);
+                    }
+                    var ttdiskoo = 0;
+                    for (i=0; i < table.rows.length ; i++) {
+                        ttdiskoo = ttdiskoo + parseInt(table.rows[i].cells[6].innerHTML);
+                    }
+                    var hemat = ttharga-ttdiskoo;
+                    semuanya.innerHTML="<tr><td colspan='3'>  </td><td> Total </td> <td>"+ttharga+"</td> <td>Grand Total</td> <td colspan='2'>"+ttdiskoo+"</td></tr> <tr><td colspan='8'> Anda hemat "+hemat+"</td></tr>"
+                
+                
+                   
+                
+            
+            }
+            function deleteFkRow(){
+                var td = event.target.parentNode;
+                var tr =td.parentNode;
+                tr.parentNode.removeChild(tr)
+                refresh();
+            }
+            function refresh(){
+                var table = document.getElementById("tableBody");
+                var txharga = 0;
+                    for (i=0; i < table.rows.length ; i++){
+                        txharga = txharga + parseInt(table.rows[i].cells[3].innerHTML);
+                    }
+
+                    var ttharga = 0;
+                    for (i=0; i < table.rows.length ; i++) {
+                        ttharga = ttharga + parseInt(table.rows[i].cells[3].innerHTML)*parseInt(table.rows[i].cells[2].innerHTML);
+                    }
+
+                    var ttdiskoo = 0;
+                    for (i=0; i < table.rows.length ; i++) {
+                        ttdiskoo = ttdiskoo + parseInt(table.rows[i].cells[6].innerHTML);
+                    }
+                    semuanya.innerHTML="<td colspan='3'>  </td><td> Total </td> <td>"+ttharga+"</td> <td>Grand Total</td> <td colspan='2'>"+ttdiskoo+"</td>"
+              
+            }
+
+            function deleteFc(){
+                var x = document.getElementById("tableBody").rows.length;
+                var table = document.getElementById("tableBody");
+                
+                table.deleteRow(x-1);
+
+            }
+            
+        </script>
+       
+    </body>
+</html>

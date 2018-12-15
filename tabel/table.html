@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <title>Untitled Document</title>
+</head>
+
+<body>
+<table border="1" width="290" height="306" id="numTable">
+  <tr>
+    <td width="72" height="51">1</td>
+
+    <td width="72" height="51">3</td>
+    <td width="73" height="51">1</td>
+    <td width="73" height="51">&nbsp;</td>
+  </tr>
+  <tr>
+    <td width="72" height="51">3</td>
+    <td width="72" height="51">4</td>
+
+    <td width="73" height="51">6</td>
+    <td width="73" height="51">&nbsp;</td>
+  </tr>
+  <tr>
+    <td width="72" height="51">1</td>
+    <td width="72" height="51">6</td>
+    <td width="73" height="51">7</td>
+
+    <td width="73" height="51">&nbsp;</td>
+  </tr>
+  <tr>
+    <td width="72" height="51">&nbsp;</td>
+    <td width="72" height="51">&nbsp;</td>
+    <td width="73" height="51">&nbsp;</td>
+    <td width="73" height="51">&nbsp;</td>
+  </tr>
+  <tr>
+
+    <td width="72" height="51">&nbsp;</td>
+    <td width="72" height="51">&nbsp;</td>
+    <td width="73" height="51">&nbsp;</td>
+    <td width="73" height="51">&nbsp;</td>
+  </tr>
+  <tr>
+    <td width="72" height="51">&nbsp;</td>
+    <td width="72" height="51">&nbsp;</td>
+    <td width="73" height="51">&nbsp;</td>
+
+    <td width="73" height="51">&nbsp;</td>
+  </tr>
+</table>
+
+<input type="button" value="col sums" onclick="calcSum()">
+
+<script>
+    function calcSum(){
+    // i = columns
+    for (i=0;i<3;i++){
+    sum=0
+    // j = rows down
+    // change j=0; to j=1; to skip top row
+      for (j=0;j<3;j++)
+          sum+=1*document.getElementById("numTable").rows[i].cells[j].innerHTML
+      document.getElementById("numTable").rows[j].cells[i].innerHTML=sum
+    }
+    }
+    </script>
+</body>
+</html>
